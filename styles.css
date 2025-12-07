@@ -1,3 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.logo {
+    margin-left: 0px;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin: -10px;
+}
+
+#navbar {
+    width: 95%;
+    margin: 20px auto;
+    padding: 12px 25px;
+    display: flex;
+    /* Center all navbar items in the middle */
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Add gap between items for proper spacing */
+    gap: 35px;
+}
+
+#navbar li {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 18px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+#navbar li a:hover,
+#navbar li a.active {
+    color: #fb3d3d;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+section h1 {
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.card {
+    width: min(800px, 92vw);
+    padding: 2rem;
+    border-radius: 16px;
+    background: rgba(20, 26, 46, .55);
+    border: 1px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+}
+
+.hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+h1 {
+    margin: 0 0 .6rem;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+p {
+    margin: 0 0 1.2rem;
+    color: var(--muted);
+}
+
 :root {
     --bg: #0a1020;
     --accent: #3de0c4;
@@ -21,35 +121,6 @@ canvas {
     z-index: 0;
 }
 
-.hero {
-    position: relative;
-    z-index: 1;
-    min-height: 100dvh;
-    display: grid;
-    place-items: center;
-    text-align: center;
-    padding: 2rem;
-}
-
-.card {
-    width: min(900px, 92vw);
-    padding: 2rem;
-    border-radius: 16px;
-    background: rgba(20, 26, 46, .55);
-    border: 1px solid rgba(255, 255, 255, .1);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
-}
-
-h1 {
-    margin: 0 0 .6rem;
-    font-size: clamp(2rem, 4vw, 3.4rem);
-}
-
-p {
-    margin: 0 0 1.2rem;
-    color: var(--muted);
-}
 
 .btn {
     display: inline-block;
@@ -60,4 +131,64 @@ p {
     background: linear-gradient(90deg, var(--accent), #00a2ff);
     color: #07121f;
     box-shadow: 0 10px 30px rgba(0, 162, 255, .35);
+}
+
+
+/* Container for image + box: side by side */
+.profile {
+    display: flex;
+    align-items: center;
+    /* vertical alignment */
+    gap: 300px;
+    /* spacing between image and box */
+    max-width: 1500px;
+    /* optional */
+    margin: auto;
+    /* center the whole block in the section */
+}
+
+/* Image sizing (your selector still works even with the AOS wrapper) */
+.picture .profile img {
+    width: 550px;
+    /* you already set this */
+    height: auto;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(183, 26, 26, 0.45);
+}
+
+/* Box on the right */
+.info_box {
+    flex: 1;
+    /* take the remaining space on the right */
+    width: auto;
+    /* override the min(...) if you want flexible width */
+    padding: 2rem;
+    border-radius: 16px;
+    background: rgba(20, 26, 46, .55);
+    border: 1px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+}
+
+/* Section tweaks */
+.picture {
+    position: relative;
+    z-index: 1;
+    min-height: 100dvh;
+    padding: 2rem;
+    /* optional; consider removing if you center with margin:auto */
+}
+
+/* Mobile: stack vertically */
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .info_box {
+        width: 100%;
+    }
 }
