@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.logo {
+    margin-left: 0px;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin: -10px;
+}
+
+#navbar {
+    width: 95%;
+    margin: 20px auto;
+    padding: 12px 25px;
+    display: flex;
+    /* Center all navbar items in the middle */
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Add gap between items for proper spacing */
+    gap: 35px;
+}
+
+#navbar li {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 18px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+#navbar li a:hover,
+#navbar li a.active {
+    color: #fb3d3d;
+    background: rgba(255, 255, 255, 0.1);
+}
+section h1 {
+    padding: 60px 20px;
+    text-align: center;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
