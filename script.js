@@ -29,7 +29,7 @@ particles.push({
 function step() {
 ctx.clearRect(0, 0, W, H);
   // nodes
-ctx.fillStyle = "rgba(61,224,196,0.9)";
+ctx.fillStyle = "rgba(255, 0, 0, 1)";
 particles.forEach((p) => {
     // slight attraction to mouse
     if (mouse.x != null) {
