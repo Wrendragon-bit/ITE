@@ -1,75 +1,63 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+:root {
+    --bg: #0a1020;
+    --accent: #3de0c4;
+    --accent2: #7c3aed;
+    --text: #e5e7eb;
+    --muted: #c7c9d1;
 }
 
+html,
 body {
+    height: 100%;
     margin: 0;
-    background: #0c3b36;
-    font-family: Arial, sans-serif;
-    margin-left: 10px;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-#header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 80px;
-    z-index: 999;
-    position: sticky;
-    top: 0;
-    left: 0;
+canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
 }
 
-.logo {
-    margin-left: 0px;
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
-    margin: -10px;
-}
-
-#navbar {
-    width: 95%;
-    margin: 20px auto;
-    padding: 12px 25px;
-    display: flex;
-    /* Center all navbar items in the middle */
-    justify-content: center;
-    align-items: center;
-    border-radius: 50px;
-    backdrop-filter: blur(15px);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    /* Add gap between items for proper spacing */
-    gap: 35px;
-}
-
-#navbar li {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-#navbar li a {
-    text-decoration: none;
-    color: #fff;
-    font-size: 16px;
-    padding: 8px 18px;
-    border-radius: 25px;
-    transition: 0.3s;
-}
-
-#navbar li a:hover,
-#navbar li a.active {
-    color: #fb3d3d;
-    background: rgba(255, 255, 255, 0.1);
-}
-section h1 {
-    padding: 60px 20px;
+.hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100dvh;
+    display: grid;
+    place-items: center;
     text-align: center;
-    color: #fff;
-    font-family: 'Courier New', Courier, monospace;
+    padding: 2rem;
+}
+
+.card {
+    width: min(900px, 92vw);
+    padding: 2rem;
+    border-radius: 16px;
+    background: rgba(20, 26, 46, .55);
+    border: 1px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .45);
+}
+
+h1 {
+    margin: 0 0 .6rem;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+p {
+    margin: 0 0 1.2rem;
+    color: var(--muted);
+}
+
+.btn {
+    display: inline-block;
+    padding: .7rem 1rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    background: linear-gradient(90deg, var(--accent), #00a2ff);
+    color: #07121f;
+    box-shadow: 0 10px 30px rgba(0, 162, 255, .35);
 }
