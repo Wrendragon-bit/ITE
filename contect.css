@@ -1,0 +1,313 @@
+/* ========================================= */
+/* 1. Global Reset and Variables (From User Input) */
+/* ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #0a1020;
+    --accent: #ec4848;
+    --accent2: #7c3aed;
+    --text: #e5e7eb;
+    --muted: #c7c9d1;
+    /* Custom colors for the card back side */
+    --card-back-start: #1e3c72; /* Darker Blue */
+    --card-back-end: #2a5298;   /* Lighter Blue */
+    --card-front-bg: #1c2333; /* Dark background for front card to match theme */
+    --card-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+/* ========================================= */
+/* 2. Header and Navigation (From User Input) */
+/* ========================================= */
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    z-index: 999;
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
+.logo {
+    margin-left: 0px;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    margin: -10px;
+}
+
+#navbar {
+    width: 95%;
+    margin: 20px auto;
+    padding: 12px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 35px;
+}
+
+#navbar li {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li a {
+    text-decoration: none;
+    color: var(--text); /* Use text variable */
+    font-size: 16px;
+    padding: 8px 18px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+#navbar li a:hover,
+#navbar li a.active {
+    color: #fb3d3d; /* Keeping the user's specific hover color */
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================= */
+/* 3. Main Content Area (Team Cards) */
+/* ========================================= */
+main {
+    position: relative;
+    z-index: 10; /* Ensures content is above the canvas background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 80px; /* Adjusted padding */
+    min-height: calc(100vh - 100px); /* Fill space below header */
+}
+
+.main-heading {
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--text);
+}
+
+.main-heading h1 {
+    margin: 0 0 .6rem;
+    font-size: clamp(2.5rem, 4vw, 3.4rem);
+    color: var(--accent); /* Highlight heading with accent color */
+}
+
+.main-heading p {
+    color: var(--muted);
+    font-size: 1.1rem;
+}
+
+/* Container for all 6 cards */
+.team-container {
+    display: flex;
+    flex-direction: column; /* Stacks the two rows (card-sections) vertically */
+    gap: 40px; /* Space between the two rows */
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* Container for a single Row (Section) */
+.card-section {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 30px; /* Spacing between cards horizontally */
+    width: 100%;
+}
+
+
+/* ========================================= */
+/* 4. Flip Card Styles (Adapted for new theme) */
+/* ========================================= */
+
+/* 1. The Container for a single Card */
+.flip-card {
+    background-color: transparent;
+    width: 100%; 
+    max-width: 300px; 
+    height: 450px;
+    perspective: 1000px;
+    cursor: pointer;
+    flex: 1 1 300px; 
+}
+
+/* 2. The Inner Wrapper (Motion) */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    box-shadow: var(--card-shadow); /* Use custom shadow variable */
+    border-radius: 15px;
+}
+
+/* Trigger the flip */
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 3. Front and Back Faces Common Styles */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border to match header */
+    backdrop-filter: blur(8px); /* Apply blur effect from the general card style */
+}
+
+/* Front Face Styling */
+.flip-card-front {
+    background-color: var(--card-front-bg); /* Dark background */
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+}
+
+.flip-card-front .caption {
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.flip-card-front h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text);
+}
+
+.flip-card-front span {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+/* Back Face Styling */
+.flip-card-back {
+    background: linear-gradient(135deg, var(--card-back-start) 0%, var(--card-back-end) 100%);
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.flip-card-back h3 {
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 80%;
+    color: var(--accent); /* Highlight title on the back */
+}
+
+.flip-card-back p {
+    margin: 8px 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    width: 100%; /* Ensure text uses available width */
+}
+
+.flip-card-back p strong {
+    color: var(--text);
+}
+
+.click-hint {
+    margin-top: 30px;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    text-align: center;
+}
+
+/* ========================================= */
+/* 5. Responsive Media Queries */
+/* ========================================= */
+/* Desktop: 3 Cards Per Row */
+@media (min-width: 992px) {
+    .flip-card {
+        max-width: calc((1000px - 60px) / 3); 
+        flex-basis: calc(33.333% - 20px); 
+    }
+}
+
+/* Tablet: 2 Cards Per Row */
+@media (min-width: 600px) and (max-width: 991px) {
+    .flip-card {
+        max-width: calc((100% - 30px) / 2); 
+        flex-basis: calc(50% - 15px);
+    }
+}
+
+/* --- New Social Links Container Style --- */
+.social-links {
+    display: flex; /* Activate Flexbox */
+    justify-content: center; /* Center icons horizontally */
+    align-items: center;
+    gap: 15px; /* Space between icons */
+    margin-top: 25px; /* Space above the icons */
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separator line */
+    width: 80%; /* Match the width of the h3 border */
+}
+
+/* Style for the individual icon links */
+.social-links a {
+    color: var(--text); /* Use the theme text color */
+    font-size: 1.8rem; /* Make the icons a good size */
+    transition: color 0.3s ease;
+}
+
+/* Specific color for hover (optional, but good practice) */
+.social-links a:hover {
+    color: var(--accent); /* Use the accent color on hover */
+}
+
+/* Ensure the hint text moves up above the social links */
+.flip-card-back .click-hint {
+    margin-top: 10px; /* Reduced margin since social links are now separate */
+    margin-bottom: 0;
+}
