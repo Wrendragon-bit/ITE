@@ -1,110 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The 6 Crusaders</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="styles.css">
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The 6 Crusaders</title>
+  <meta name="description" content="Six Information Technology Engineering students at the Royal University of Phnom Penh: a founder, a pentester, a trader, a tester, a designer and an ML engineer.">
+  <meta name="theme-color" content="#0b0609">
+  <link rel="icon" href="image/crest.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400..600&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <canvas id="net"></canvas>
-    <header id="header">
-        <a href="index.html"><img src="image/logo.jpg" class="logo" alt="The 6 Crusaders Logo"></a>
-        <nav>
-            <ul id="navbar">
-                <li><a class="active" href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<!--
+THESIS: The six members are the content; a cinematic NexaCore frame in crest red puts them first and refuses the particle-net, glass-card student template.
+OWN-WORLD: Warm black, a pleated crimson-to-ember light fan rising from a horizon, a floating white pill nav, grayscale photo cards that warm to color with a red rim, soft-shadow white rows, a year-by-year staircase that turns solid as each year fills. Red marks actions and focus. Kantumruy Pro throughout.
+STORY: A visitor learns who the six are, picks the person whose specialty they need, and calls, emails or messages them; readers who want depth read each project's write-up under the steps.
+FIRST VIEWPORT: White pill nav (ring-6 mark, Crew, Journey, red Contact); "The 6 Crusaders" centered at 6rem; one line naming the six roles; the light fan fills the lower 40% and tilts with the pointer.
+FORM: User-pinned NexaCore in crest red; roll assigned #3, overridden by the pin. Seed 076e0f71.
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md
+-->
+<svg class="sprite" width="0" height="0" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-ring" x1="3" y1="3" x2="25" y2="25" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ff6a2b"/><stop offset=".5" stop-color="#e11d32"/><stop offset="1" stop-color="#8e0f3a"/>
+    </linearGradient>
+  </defs>
+  <symbol id="i-mark" viewBox="0 0 28 28"><circle cx="14" cy="14" r="11.75" fill="none" stroke="url(#g-ring)" stroke-width="2.5"/><text x="14" y="18.7" text-anchor="middle" font-size="13" font-weight="600" fill="currentColor">6</text></symbol>
+  <symbol id="i-dot" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="2.5" fill="currentColor"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+</svg>
 
-    <section class="hero">
-        <div class="card">
-            <h1>Welcome to The 6 Crusaders</h1>
-            <p>Your gateway to innovation and excellence.</p>
-            <p>Explore our projects, meet the team, and discover how we're making a difference.</p>
+<header class="nav">
+  <nav class="nav__bar" aria-label="Main">
+    <a class="brand" href="#top"><svg class="mark" aria-hidden="true"><use href="#i-mark"/></svg>The 6 Crusaders</a>
+    <ul class="nav__links">
+      <li><a href="#crew">Crew</a></li>
+      <li><a href="#journey">Journey</a></li>
+    </ul>
+    <a class="button" href="#contact">Contact</a>
+    <button class="nav__toggle" type="button" popovertarget="menu" aria-label="Menu"><svg aria-hidden="true"><use href="#i-menu"/></svg></button>
+  </nav>
+  <div class="menu" id="menu" popover>
+    <a href="#crew">Crew</a>
+    <a href="#journey">Journey</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="top">
+    <div class="hero__light" aria-hidden="true">
+      <div class="hero__floor"><div class="hero__rays"></div></div>
+    </div>
+    <div class="hero__copy">
+      <h1>The 6 Crusaders</h1>
+      <p>Six Information Technology Engineering students at the Royal University of Phnom Penh, graduating in 2028. Between us: a founder, a pentester, a trader, a tester, a designer and an ML engineer.</p>
+    </div>
+  </section>
+
+  <section class="crew" id="crew" aria-labelledby="crew-title">
+    <div class="section-head">
+      <h2 id="crew-title">Six people, six specialties.<br><span>Pick the one you need.</span></h2>
+      <p>Every card links straight to that person.</p>
+    </div>
+
+    <!-- Each card has its own address, e.g. index.html#dararoth, so a member can share a link to their card.
+         A professional link (LinkedIn, GitHub or a CV) goes first in the links, with class="pro". -->
+    <ul class="crew__grid">
+      <li class="member" id="bunkheang" style="--fx:48%;--fy:40%">
+        <img src="image/kheang.jpg" alt="Hong Bunkheang laughing under a clear sky" width="1536" height="2048" loading="lazy" decoding="async">
+        <div class="member__body">
+          <h3>Hong Bunkheang</h3>
+          <p class="member__role">CEO &amp; co-founder, WDG</p>
+          <ul class="member__facts"><li>Strategic planning</li><li>Posts as Wrendragon</li></ul>
+          <p class="member__links">
+            <a href="https://t.me/Wrendragon36">Telegram</a>
+            <a href="https://www.facebook.com/bunkheang36/">Facebook</a>
+            <a href="https://www.youtube.com/@bunkheanggs6548">YouTube</a>
+            <a href="https://www.tiktok.com/@wrendragon">TikTok</a>
+          </p>
         </div>
-    </section>
-
-    <section class="picture">
-        <div class="profile">
-            <div data-aos="fade-down-right"><img src="image/kheang.jpg" alt=""></div>
-            <div data-aos="zoom-in-up" class="info_box">
-            <h1>Bunkheang</h1>
-            <h2>CEO & Co-Founder of WDG<br>Student at RUPP<br>Major ITE</h2>
-            </div>
-            
+      </li>
+      <li class="member" id="koemhong" style="--fx:56%;--fy:50%">
+        <img src="image/hong.jpg" alt="Hour Koemhong reading outdoors" width="960" height="1280" loading="lazy" decoding="async">
+        <div class="member__body">
+          <h3>Hour Koemhong</h3>
+          <p class="member__role">Developer</p>
+          <ul class="member__facts"><li>Penetration testing</li><li>Mazer of A5</li></ul>
+          <p class="member__links">
+            <a href="https://t.me/KaiZooKi">Telegram</a>
+          </p>
         </div>
-    </section> 
-
-    <section class="picture">
-        <div class="profile">
-            <div data-aos="zoom-out-up"><img src="image/hong.jpg" alt=""></div>
-            <div data-aos="zoom-in-up" class="info_box">
-            <h1>Koemhong</h1>
-            <h2>Mazer of A5<br>Student at RUPP<br>Major ITE</h2>
-            </div>
+      </li>
+      <li class="member" id="yuleang" style="--fx:50%;--fy:46%">
+        <img src="image/leang2.png" alt="PovChomreoun Yuleang in a suit and tie" width="556" height="874" loading="lazy" decoding="async">
+        <div class="member__body">
+          <h3>PovChomreoun Yuleang</h3>
+          <p class="member__role">Hacker &amp; trader</p>
+          <ul class="member__facts"><li>Cloud computing</li><li>Partner with Bybit</li></ul>
+          <p class="member__links">
+            <a href="https://t.me/yuleangbybit">Telegram</a>
+            <a href="https://www.facebook.com/BigBoss.Coder.Trader">Facebook</a>
+          </p>
         </div>
-    </section>
-
-    <section class="picture">
-        <div class="profile">
-            <div data-aos="fade-up"
-        data-aos-anchor-placement="top-center"><img src="image/leang2.png" alt=""></div>
-            <div data-aos="flip-left" class="info_box">
-            <h1>PovChomreoun Yuleang</h1>
-            <h2>Hacker / Trader<br>Student at RUPP<br>Major ITE <br>Partner with Bybit</h2>
-            </div>
+      </li>
+      <li class="member" id="borypitou" style="--fx:60%;--fy:37%">
+        <img src="image/pitou.jpg" alt="Oul Borypitou speaking in class" width="960" height="1280" loading="lazy" decoding="async">
+        <div class="member__body">
+          <h3>Oul Borypitou</h3>
+          <p class="member__role">Software tester</p>
+          <ul class="member__facts"><li>Automated testing</li><li>“Nothing special”</li></ul>
+          <p class="member__links">
+            <a href="https://t.me/borypitououl">Telegram</a>
+            <a href="https://www.facebook.com/bory.pitou.oul.2025">Facebook</a>
+          </p>
         </div>
-    </section>
-
-    <section class="picture">
-        <div class="profile">
-            <div data-aos="fade-up"
-        data-aos-anchor-placement="top-center"><img src="image/pitou.jpg" alt=""></div>
-            <div data-aos="flip-left" class="info_box">
-            <h1>Oul Borypitou</h1>
-            <h2>Nothing special<br>Student at RUPP<br>Major ITE</h2>
-            </div>
+      </li>
+      <li class="member" id="proseth" style="--fx:58%;--fy:47%">
+        <img src="image/proseth.jpg" alt="Eng Proseth by the river at night" width="640" height="640" loading="lazy" decoding="async">
+        <div class="member__body">
+          <h3>Eng Proseth</h3>
+          <p class="member__role">Design architect &amp; editor</p>
+          <ul class="member__facts"><li>Prototyping</li><li>Figma</li></ul>
+          <!-- Telegram left out: the old page pointed it at t.me/KaiZooKi, Koemhong's account. Add the right one here. -->
+          <p class="member__links">
+            <a href="https://www.facebook.com/oh.proseth">Facebook</a>
+          </p>
         </div>
-    </section>
-
-        <section class="picture">
-        <div class="profile">
-            <div data-aos="zoom-in-left"><img src="image/proseth.jpg" alt=""></div>
-            <div data-aos="flip-left" class="info_box">
-            <h1>Eng Proseth</h1>
-            <h2>Editor<br>Student at RUPP<br>Major ITE</h2>
-            </div>
+      </li>
+      <li class="member" id="dararoth" style="--fx:55%;--fy:43%">
+        <img src="image/roth.jpg" alt="Eng Dararoth presenting in class" width="960" height="1280" loading="lazy" decoding="async">
+        <div class="member__body">
+          <h3>Eng Dararoth</h3>
+          <p class="member__role">ML &amp; AI engineer</p>
+          <ul class="member__facts"><li>Machine learning</li><li>Documentation</li></ul>
+          <p class="member__links">
+            <a class="pro" href="https://github.com/thegeostar">GitHub</a>
+            <a href="https://t.me/ENG_Dararoth">Telegram</a>
+            <a href="https://www.facebook.com/engdararoth123">Facebook</a>
+          </p>
         </div>
-    </section>
+      </li>
+    </ul>
+  </section>
 
-        <section class="picture">
-        <div class="profile">
-            <div data-aos="zoom-in-right"><img src="image/roth.jpg" alt=""></div>
-            <div data-aos="flip-left" class="info_box">
-            <h1>Eng Dararoth</h1>
-            <h2>Machine Learning Engineer / AI Engineer <br>Student at RUPP<br>Major ITE</h2>
-            </div>
-        </div>
-    </section>
+  <section class="journey" id="journey" aria-labelledby="journey-title">
+    <div class="section-head">
+      <h2 id="journey-title">How we’ve grown,<br><span>one year at a time.</span></h2>
+      <p>One step for each year of the degree: what we built that year, and who built it. Every project opens into a full write-up below, with methods, results and code.</p>
+    </div>
 
+    <!-- THE CLIMB: one step per year of the degree. To add a milestone, copy an <li> inside that year's <ul>.
+         A year with no real milestones yet gets class "is-open" (dashed line, quieter text).
+         Each new academic year, move "is-now" and "· now" up one step. -->
+    <ol class="steps">
+      <li class="step">
+        <span class="step__name"><svg aria-hidden="true"><use href="#i-dot"/></svg>Year 1</span>
+        <ul>
+          <li>Started Information Technology Engineering at RUPP<span class="step__who">All six of us</span></li>
+        </ul>
+      </li>
+      <li class="step">
+        <span class="step__name"><svg aria-hidden="true"><use href="#i-dot"/></svg>Year 2</span>
+        <ul>
+          <li>
+            <a class="step__more" href="#ecommerce">E-commerce platform<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            Coursework: a multi-vendor Django shop with KHQR checkout and a shop assistant chatbot
+            <span class="step__who"><a href="#dararoth">Dararoth</a>, <a href="#borypitou">Borypitou</a></span>
+          </li>
+        </ul>
+      </li>
+      <li class="step is-now">
+        <span class="step__name"><svg aria-hidden="true"><use href="#i-dot"/></svg>Year 3 · now</span>
+        <ul>
+          <li>
+            <a class="step__more" href="#oceaneye">OceanEye<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            Underwater species detection, built for the 2026 World Vocational College Skills Competition
+            <span class="step__who"><a href="#dararoth">Dararoth</a>, <a href="#yuleang">Yuleang</a></span>
+          </li>
+        </ul>
+      </li>
+      <li class="step is-open">
+        <span class="step__name"><svg aria-hidden="true"><use href="#i-dot"/></svg>Year 4</span>
+        <ul>
+          <li>Graduating in 2028</li>
+        </ul>
+      </li>
+    </ol>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init();</script>
-    <script src="script.js"></script>
+    <!-- WRITE-UPS, newest first. Each has its own address (index.html#oceaneye) to send to a reader.
+         To add one: copy an <article>, give it a new id, and link to it from that year's milestone. -->
+    <article class="writeup" id="oceaneye">
+      <h3>OceanEye</h3>
+      <p class="writeup__lead">Underwater species detection with a state-space YOLO model, built for the 2026 World Vocational College Skills Competition in Phnom Penh, 20 to 22 September 2026.</p>
+      <div class="writeup__parts">
+        <section><h4>The problem</h4><p>Find and name four seabed species in underwater images, video and live streams: sea cucumbers, sea urchins, starfish and scallops. Offline, on a single GPU.</p></section>
+        <section><h4>Approach</h4><p>A 72.4M-parameter YOLOv8 detector with Mamba state-space (VSSM) blocks in its backbone, trained on the URPC2021 underwater dataset at 640 × 640. The state-space layers run on a parallel scan written in plain PyTorch, so the model needs no compiled CUDA extension.</p></section>
+        <section><h4>Results</h4><p>mAP@0.5 of 0.867 and mAP@0.5:0.95 of 0.522 on validation, at 0.821 precision and 0.817 recall. 1.13 s per image, half the time of a step-by-step scan. Live video streams at about 26 fps while the boxes refresh about once a second. It knows only these four species, and accuracy drops on footage unlike its training data.</p></section>
+        <section><h4>Stack</h4><p>Python, PyTorch with CUDA, Ultralytics YOLOv8 and Mamba state-space blocks, with a Flask dashboard for images, video and live monitoring.</p></section>
+        <section><h4>Team</h4><p><a href="#dararoth">Eng Dararoth</a> and <a href="#yuleang">PovChomreoun Yuleang</a>.</p></section>
+        <section><h4>Links</h4><p><a href="https://github.com/thegeostar/oceaneye">Code and trained model on GitHub</a></p></section>
+      </div>
+    </article>
+
+    <article class="writeup" id="ecommerce">
+      <h3>E-commerce platform</h3>
+      <p class="writeup__lead">A multi-vendor Django shop: coursework for Year 2, Semester 2, built on Destiny Franks’ Django e-commerce course.</p>
+      <div class="writeup__parts">
+        <section><h4>Starting point</h4><p>The course’s store: catalog, search and filters, cart, wishlist, reviews, coupons, and separate dashboards for customers and vendors.</p></section>
+        <section><h4>What we added</h4><p>Checkout by KHQR from any Cambodian banking app, or cash on delivery, with the seller confirming each payment before an order counts as paid. Plus a blog and a shop assistant chatbot.</p></section>
+        <section><h4>The chatbot</h4><p>No language model. It scores intent from keywords and phrases, fuzzy-matches products, categories and vendors in the database, and answers from live prices and stock, so a product added a minute ago can be asked about straight away.</p></section>
+        <section><h4>Stack</h4><p>Python, Django 4.2, SQLite, HTML, SCSS and JavaScript.</p></section>
+        <section><h4>Team</h4><p><a href="#dararoth">Eng Dararoth</a> and <a href="#borypitou">Oul Borypitou</a>.</p></section>
+        <section><h4>Links</h4><p><a href="https://github.com/thegeostar/e-commerce">Code on GitHub</a></p></section>
+      </div>
+    </article>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="section-head">
+      <h2 id="contact-title">Need one of us?<br><span>Call or email directly.</span></h2>
+    </div>
+
+    <div class="contact__grid">
+      <ul class="people">
+        <li class="person" style="--fx:48%;--fy:40%;--zoom:2.3">
+          <span class="avatar"><img src="image/kheang.jpg" alt="" width="1536" height="2048" loading="lazy" decoding="async"></span>
+          <strong>Hong Bunkheang</strong>
+          <p><a href="tel:+855964355014">+855 96 435 5014</a><a href="tel:+85511356336">+855 11 356 336</a></p>
+          <p><a href="mailto:hongbunkheang12@gmail.com">hongbunkheang12@gmail.com</a></p>
+        </li>
+        <li class="person" style="--fx:56%;--fy:50%;--zoom:2.6">
+          <span class="avatar"><img src="image/hong.jpg" alt="" width="960" height="1280" loading="lazy" decoding="async"></span>
+          <strong>Hour Koemhong</strong>
+          <p><a href="tel:+85561988816">+855 61 988 816</a></p>
+          <p><a href="mailto:koemhong181205@gmail.com">koemhong181205@gmail.com</a></p>
+        </li>
+        <li class="person" style="--fx:50%;--fy:46%;--zoom:1.4">
+          <span class="avatar"><img src="image/leang2.png" alt="" width="556" height="874" loading="lazy" decoding="async"></span>
+          <strong>PovChomreoun Yuleang</strong>
+          <p><a href="tel:+855974871434">+855 97 487 1434</a></p>
+          <p><a href="mailto:povchomreounyuleang@gmail.com">povchomreounyuleang@gmail.com</a></p>
+        </li>
+      </ul>
+
+      <div class="crest"><img src="image/crest.png" alt="The 6 Crusaders crest" width="325" height="325" loading="lazy" decoding="async"></div>
+
+      <ul class="people">
+        <li class="person" style="--fx:60%;--fy:37%;--zoom:3.4">
+          <span class="avatar"><img src="image/pitou.jpg" alt="" width="960" height="1280" loading="lazy" decoding="async"></span>
+          <strong>Oul Borypitou</strong>
+          <p><a href="tel:+855977298119">+855 97 729 8119</a></p>
+          <p><a href="mailto:oborypitou@gmail.com">oborypitou@gmail.com</a></p>
+        </li>
+        <li class="person" style="--fx:58%;--fy:46%;--zoom:3.6">
+          <span class="avatar"><img src="image/proseth.jpg" alt="" width="640" height="640" loading="lazy" decoding="async"></span>
+          <strong>Eng Proseth</strong>
+          <p><a href="tel:+85589513131">+855 89 513 131</a></p>
+          <p><a href="mailto:proseth.rng006@gmail.com">proseth.rng006@gmail.com</a></p>
+        </li>
+        <li class="person" style="--fx:55%;--fy:43%;--zoom:3.4">
+          <span class="avatar"><img src="image/roth.jpg" alt="" width="960" height="1280" loading="lazy" decoding="async"></span>
+          <strong>Eng Dararoth</strong>
+          <p><a href="tel:+85561756481">+855 61 756 481</a></p>
+          <p><a href="mailto:daraeng054@gmail.com">daraeng054@gmail.com</a></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="foot__inner">
+    <a class="brand" href="#top"><svg class="mark" aria-hidden="true"><use href="#i-mark"/></svg>The 6 Crusaders</a>
+    <p>Information Technology Engineering, Royal University of Phnom Penh</p>
+  </div>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
